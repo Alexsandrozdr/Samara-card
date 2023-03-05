@@ -8,8 +8,8 @@
   --text-color: rgb(255, 255, 255);
   --bg-url: url(./assets/bgMobBlack.jpg);
   --stroke-color: rgb(249, 138, 236);
-  --surface-color: rgb(238, 153, 251);
-  --surface-color-hover: rgba(234, 0, 255, 0.27);
+  --surface-color: rgba(255, 255, 255, 0);
+  --surface-color-hover: rgb(249, 138, 236);
   --highlight-color: rgba(255, 255, 255, 0.2);
   --switch-bg-url: url(./assets/moon-Stars.svg);
 }
