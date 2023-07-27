@@ -15,13 +15,15 @@
 
     <link rel="stylesheet" href="style.css" />
     <link rel="shortcut icon" href="icon/favicon.ico" type="image/x-icon">
-    <script src="https://unpkg.com/phosphor-icons"></script>
-    <script src="./script.js"></script>
     <title>Mara Lash Design</title>
+    <!-- TODO: Adicionar Meta Description pra SEO -->
+    <meta name="description" content="...">
   </head>
   <body>
-    <div id="container">
+    <main id="container">
       <div id="profile">
+        <!-- Alt é feito para acessibilidade, se tu fosse alguem cego, isso descreveria a foto pra você? -->
+        <!-- Essa imagem não foi cortada corretamente, está meio oval, recomendo pegar uma imagem sem o fundo transparente e fazer a borda arredondada com border-radius -->
         <img
           src="assets/avatar.png"
           alt="Foto da melhor lash design do brasil"
@@ -30,35 +32,47 @@
         <p>Lash Desing</p>
       </div>
 
-      <div id="switch" onclick="toggleMode()">
-        <button></button>
-        <span></span>
-      </div>
-       <ul>
+      <!-- 1. o onclick precisa estar no botão, eu mudaria essa div pra um botão e o botão pra um span com classes -->
+      <!-- 2. evitar usar onclick no html, adicionar evento pelo js -->
+      <!-- 3. adicionar aria-label pra ajudar pessoas com deficiências visuais -->
+      <button id="switch" aria-label="Mudar Tema">
+        <span class="button"></span>
+        <span class="background"></span>
+      </button>
+      <!-- Ajustar identação e adicionar </ul> perdido -->
+      <ul id="links">
         <li>
           <a href="https://www.instagram.com/mara_lashdesign/" target="_blank">
-            <i class="ph-instagram-logo-bold"></i>Instagram</a>
+            <!-- Tirando o bold dos icones, que tá meio estorado -->
+            <i class="ph-instagram-logo"></i>
+            Instagram
+          </a>
         </li>
         <li>
           <a href="https://www.facebook.com/samara.bitencourt.79?mibextid=ZbWKwL" target="_blank">
-            <i class="ph-facebook-logo-bold"></i>Facebook</a>
+            <i class="ph-facebook-logo"></i>
+            Facebook
+          </a>
         </li>
         <li>
           <a href="https://api.whatsapp.com/send?phone=5548999082955" target="_blank">
-            <i class="ph-whatsapp-logo-bold"></i> WhatsApp</a>
+            <i class="ph-whatsapp-logo"></i> 
+            WhatsApp
+          </a>
         </li>
-        <footer>
-          produzido por
-          <a href="https://www.instagram.com/alexsandro.zdr/" target="_blank"
-            >
-            <i class="ph-instagram-logo-bold"></i>Alexsandro.Zdr</a
-          >
-        </footer>
-      </div>
-     
-  
-      
-     
+      </ul>
+      <footer>
+        Produzido por
+        <a href="https://www.instagram.com/alexsandro.zdr/" target="_blank">
+          <i class="ph-instagram-logo"></i>
+          Alexsandro.Zdr
+        </a>
+      </footer>
+    </main>
 
+    <!-- Movendo scripts pro final da pagina, pra executar apenas quando carregar a DOM -->
+    <script src="https://unpkg.com/phosphor-icons"></script>
+    <!-- Não tem a nessessidade de um arquivo separado pra meia duzia de linhas de script, mas vou deixar aqui por questão de estrutura -->
+    <script src="./script.js" async></script>
   </body>
 </html>

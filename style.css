@@ -5,7 +5,8 @@
 }
 
 :root {
-  --text-color: rgb(255, 255, 255);
+  /* Só diminuindo o tamanho mesmo */
+  --text-color: #fff;
   --bg-url: url(./assets/bgMobBlack.jpg);
   --stroke-color: rgb(249, 138, 236);
   --surface-color: rgba(255, 255, 255, 0);
@@ -25,51 +26,71 @@
 }
 
 body {
-  background: var(--bg-url) no-repeat top center/cover;
-  height: 100vh;
+  background: var(--bg-url) no-repeat top center / cover fixed;
+}
+
+/* Aplicando 100% no html tbm */
+html,
+body {
+  /* Body e Elementos com fixed, sempre usar % em vez de vh */
+  height: 100%;
 }
 
 body * {
   font-family: "Inter", sans-serif;
+  -webkit-font-smoothing: antialiased !important;
   color: var(--text-color);
 }
-ul li a i {
-  font-size: 18px;
-}
+
+/* Só uma maneira diferente de fazer a msm coisa */
 #container {
-  width: 100%;
-  max-width: 588px;
-  margin: 56px auto 0px;
-  padding: 0 24px;
+  width: 90%;
+  max-width: 480px;
+  margin: 0 auto;
+  padding-top: 80px;
+  padding-bottom: 40px;
+  min-height: 100%;
+  /* Flex */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
 }
 
 /* profile */
 #profile {
   text-align: center;
-  padding: 24px;
 }
 
 #profile img {
-  margin-top: -33px;
   border-radius: 50%;
   width: 183px;
+  /* Image se adaptar ao tamanho atual - quadrado */
+  height: 183px;
+  object-fit: cover;
+  object-position: center;
 }
 
 #profile p {
   font-weight: 500;
-  line-height: 24px;
-  margin-top: 8px;
+  line-height: 1;
+  margin-top: 4px;
 }
 
 /* switch */
+
+/* Ajustando de acordo com a atualização do arquivo html */
 #switch {
   position: relative;
   width: 64px;
-
-  margin: 4px auto;
+  /* Removendo estilo padrão do botão */
+  background: none;
+  outline: none;
+  border: none;
+  cursor: pointer;
 }
 
-#switch button {
+#switch .button {
   width: 32px;
   height: 32px;
   background: white var(--switch-bg-url) no-repeat center;
@@ -82,18 +103,21 @@ ul li a i {
   z-index: 1;
   transform: translateY(-50%);
 
-  animation: slide-back 0.2s;
+  animation: slide-back 300ms;
+  /* Adicionando animação no outline */
+  outline: 8px solid transparent;
+  transition: outline 300ms ease-out;
 }
 
-.light #switch button {
-  animation: slide-in 0.2s forwards;
+.light #switch .button {
+  animation: slide-in 300ms forwards;
 }
 
-#switch button:hover {
+#switch .button:hover {
   outline: 8px solid var(--highlight-color);
 }
 
-#switch span {
+#switch .background {
   display: block;
   width: 64px;
   height: 24px;
@@ -105,19 +129,18 @@ ul li a i {
 }
 
 /* links */
-ul {
+/* Adicionando id pra manter o padrão das outras partes */
+#links {
   list-style: none;
-
   display: flex;
   flex-direction: column;
   gap: 16px;
-
-  padding: 13px 0;
+  width: 100%;
 }
 
-ul li a {
+#links li a {
   display: flex;
-  gap: 8px;
+
   align-items: center;
   justify-content: center;
   gap: 4px;
@@ -134,24 +157,55 @@ ul li a {
   text-decoration: none;
   font-weight: 500;
 
-  transition: background 0.2s;
+  transition: background 300ms ease-out, border-color 300ms ease-out,
+    color 300ms ease-out;
+}
+
+#links li a i {
+  position: relative;
+  top: 0px;
+  font-size: 20px;
+  transition: color 300ms ease-out;
 }
 
 /* pseudo-selector */
-ul li a:hover {
+#links li a:hover {
   background: var(--surface-color-hover);
-  border: 1.5px solid var(--text-color);
+  border-color: var(--text-color);
 }
 
 footer {
   padding: 10px 0;
   text-align: center;
   font-size: 14px;
+  margin-top: auto;
+}
+
+footer a {
+  position: relative;
+  top: 2px;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  outline: none;
+  text-decoration: none;
+  transition: color 300ms ease-out;
+}
+
+footer a i {
+  color: currentColor;
+  position: relative;
+  top: 1px;
+}
+
+footer a:hover {
+  color: var(--stroke-color);
 }
 
 /* media queries */
 @media (min-width: 700px) {
   :root {
+    /* PS: Um fundo claro em dark theme não faz sentido nenhum */
     --bg-url: url(./assets/bgBlack.jpg);
   }
 
